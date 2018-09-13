@@ -6,6 +6,7 @@ public class Boletim {
 
 	public void cadastroAluno(String nomeAluno, String serie, String formatoAno, String nomeColegio) {
 
+		System.out.println("Teste");
 	}
 
 	public void cadastrarMateria() {
