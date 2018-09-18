@@ -85,3 +85,4 @@ public class Boletim {
 		x.cadastrarNota();
 	}
 }
+
