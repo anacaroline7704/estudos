@@ -14,14 +14,14 @@ public class Calculadora {
 		int S2 = 10;
 		int resultadoSubtracao = S1 - S2;
 		System.out.println("Resultado da subtração(70-10):" + resultadoSubtracao);
+		
 
 	}
 
-	public void divide() {
-		int d1 = 10;
-		int d2 = 2;
+	public void divide(int d1, int d2) {
+
 		int resultadoDivisao = d1 / d2;
-		System.out.println("Resultado da divisão(10÷2):" + resultadoDivisao);
+		System.out.println("Resultado da divisão(" + d1 + "÷" + d2 + "):" + resultadoDivisao);
 	}
 
 	public void multiplica() {
@@ -36,7 +36,7 @@ public class Calculadora {
 		calc.ajuste(20, 30);
 		calc.soma();
 		calc.subtrai();
-		calc.divide();
+		calc.divide(40, 2);
 		calc.multiplica();
 	}
 
