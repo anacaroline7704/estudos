@@ -24,6 +24,12 @@ public class Calculadora {
 		System.out.println("Resultado da divisão(" + d1 + "÷" + d2 + "):" + resultadoDivisao);
 	}
 
+	public double divide(double d1, double d2) {
+		double resultadoDivisao = d1 / d2;
+		System.out.println("Resultado da divisão(" + d1 + "÷" + d2 + "):" + resultadoDivisao);
+		return resultadoDivisao ;
+	}
+	
 	public void multiplica() {
 		int m1 = 3;
 		int m2 = 7;

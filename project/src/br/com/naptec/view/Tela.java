@@ -1,67 +1,66 @@
 package br.com.naptec.view;
 
-import java.awt.BorderLayout;
-import java.awt.ComponentOrientation;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import br.com.naptec.Calculadora;
 
 public class Tela {
-
-	public JTextField getCampo1() {
-		JTextField tx = new JTextField() ;
-		tx.setSize(200, 24);
-		return tx;
-	}
 	
-	public JTextField getCampo2() {
-		JTextField tf = new JTextField() ;
-		tf.setSize(200, 20);
-		return tf;
-	}
+	private JTextField valor;
+	private JTextField taxa;
+	JLabel resultado = new JLabel("");
 	
-	public JButton botao() {
-		JButton jb = new JButton();
-		jb.setText("botao");
-		jb.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				System.out.println();
-				Calculadora calc = new Calculadora();
-				
-				String text = getCampo1().getText();
-				String text2 = getCampo2().getText();
-				
-				
-				Integer valorInteiro = Integer.valueOf(text);
-				calc.divide(valorInteiro, Integer.valueOf(text2));
-			}
-		});
-		return jb;
-	}
-
 	public void init() {
 		JFrame jf = new JFrame();
+		jf.getContentPane().setLayout(null);
+		
+		valor = new JTextField();
+		valor.setBounds(102, 11, 86, 20);
+		jf.getContentPane().add(valor);
+		valor.setColumns(10);
+		
+		taxa = new JTextField();
+		taxa.setBounds(102, 42, 86, 20);
+		jf.getContentPane().add(taxa);
+		taxa.setColumns(10);
+		
+		JLabel lblValor = new JLabel("Valor");
+		lblValor.setBounds(46, 14, 46, 14);
+		jf.getContentPane().add(lblValor);
+		
+		JLabel lblTaxa = new JLabel("Taxa");
+		lblTaxa.setBounds(46, 45, 46, 14);
+		jf.getContentPane().add(lblTaxa);
+		
+		JButton btnCalcula = new JButton("Calcula");
+		btnCalcula.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				String tx = taxa.getText()  ;
+				String vl = valor.getText() ;
+				
+				Double vv = Double.valueOf(tx);
+				Double tt = Double.valueOf(vl);
+				
+				Calculadora c = new Calculadora();
+				c.divide(tt, vv);
+				double d = c.divide(tt, vv) ;
+				String dd = String.valueOf(d) ;
+				resultado.setText(dd);
+			}
+		}); 
+		btnCalcula.setBounds(99, 73, 89, 23);
+		jf.getContentPane().add(btnCalcula);
+		
+		resultado.setBounds(109, 117, 63, 14);
+		jf.getContentPane().add(resultado);
 		jf.setVisible(true);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setTitle("Teste");
-		jf.setSize(1024, 250);
-
-		jf.setLayout(new GridLayout(4,2));
-
-		jf.getContentPane().add(getCampo1());
-		jf.getContentPane().add(getCampo2());
-		jf.getContentPane().add(botao());
-		jf.getContentPane().setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		jf.pack();
 	}
 
 	public static void main(String[] args) {
