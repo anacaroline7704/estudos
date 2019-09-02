@@ -1,0 +1,32 @@
+		
+	CREATE DATABASE wallethub;
+	USE wallethub;
+	
+	DROP TABLE IF EXISTS blocked_ip;
+	CREATE TABLE blocked_ip (
+		start_date DATETIME(3),
+		internet_protocol VARCHAR(15),
+		threshold INT(5), 
+		request VARCHAR(30), 
+		status INT(3),
+		user_agent VARCHAR(255),
+		comment VARCHAR(140)
+	);
+	
+	SELECT * FROM blocked_ip;
+	
+	(1) Write MySQL query to find IPs that mode more than a certain number of requests for a given time period.
+		Ex: Write SQL to find IPs that made more than 100 requests starting from 2017-01-01.13:00:00 to 2017-01-01.14:00:00
+	
+		SELECT DISTINCT(internet_protocol), threshold FROM blocked_ip WHERE 
+			threshold >= 200 AND
+			start_date BETWEEN '2017-01-01.00:00:00' AND '2017-01-01.23:59:59'
+			group by internet_protocol
+			having count(1) > 1
+		;
+	
+	(2) Write MySQL query to find requests made by a given IP.
+		
+		SELECT DISTINCT(start_date), internet_protocol, threshold, request, status FROM blocked_ip WHERE 
+			internet_protocol = '192.168.143.177'
+		;
